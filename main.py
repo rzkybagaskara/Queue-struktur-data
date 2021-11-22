@@ -81,11 +81,21 @@ def remove():
 
 def isempty(q):
   global queue
-  print(tampilan)
+  global rear
   if len(queue) == 0:
-    print("Queue ini kosong/Hampa")
+    print("(TRUE) Queue ini kosong/Hampa : ")
+    print("Q =",tampilan)
+    print("FRONT(Q) = NULL")
+    print("REAR(Q)  = NULL")
+    print(f"NOEL(Q) = {len(queue)}\n")   
   else:
-    print("Queue ini tidak kosong/hampa")
+    print("(FALSE) Queue ini tidak kosong/hampa : ")
+    print("Q =",tampilan)
+    print(f"FRONT(Q) = {queue[0][0]},{queue[0][1]}")
+    print(f"REAR(Q)  = {queue[rear][0]},{queue[rear][1]}")
+    print(f"NOEL(Q)  = {len(queue)}\n")
+
+
 
 print('==========================')
 print('========  QUEUE  =========')
