@@ -1,4 +1,3 @@
-#Placeholder
 inp_menu = True
 size = 0
 rear = 0
@@ -20,14 +19,13 @@ def create():
     queue = []
     tampilan =  ["_" for i in range(size)] 
     print("Queue telah dibuat") 
-    print("Q =",tampilan)
+    print("Q =",'[ %s ]' % ' , '.join(map(str, tampilan)))
     print("FRONT(Q) = NULL")#Karena masih hampa, front = null
     print("REAR(Q)  = NULL") #karena masih hampa, rear = null
     print(f"NOEL(Q)  = {len(queue)}\n")#Ngitung panjang queue
   
-
+  
 def insert(q):
-  global front
   global rear
   global size
   global indeks
@@ -38,7 +36,7 @@ def insert(q):
     queue.append([q, indeks+1])
     tampilan[indeks] = q
     indeks += 1
-    print("Q =",tampilan)
+    print("Q =",'[ %s ]' % ' , '.join(map(str, tampilan)))
     # [a,1] = a,1 = 3
     # [1:4] 1 sampe 4
     # a,1
@@ -57,7 +55,6 @@ def remove():
   global rear
   global size
   global indeks
-  global noel
   global tampilan
   if len(queue) == 0:
     print("UNDERFLOW\n")
@@ -68,7 +65,7 @@ def remove():
     front += 1 
     if front == size:
         front = 0
-    print("Q =",tampilan) 
+    print("Q =",'[ %s ]' % ' , '.join(map(str, tampilan)))
     if len(queue) == 0:
         print(f"FRONT(Q) = NULL")
         print(f"REAR(Q)  = NULL")
@@ -84,18 +81,16 @@ def isempty(q):
   global rear
   if len(queue) == 0:
     print("(TRUE) Queue ini kosong/Hampa : ")
-    print("Q =",tampilan)
+    print("Q =",'[ %s ]' % ' , '.join(map(str, tampilan)))
     print("FRONT(Q) = NULL")
     print("REAR(Q)  = NULL")
     print(f"NOEL(Q) = {len(queue)}\n")   
   else:
     print("(FALSE) Queue ini tidak kosong/hampa : ")
-    print("Q =",tampilan)
+    print("Q =",'[ %s ]' % ' , '.join(map(str, tampilan)))
     print(f"FRONT(Q) = {queue[0][0]},{queue[0][1]}")
     print(f"REAR(Q)  = {queue[rear][0]},{queue[rear][1]}")
     print(f"NOEL(Q)  = {len(queue)}\n")
-
-
 
 print('==========================')
 print('========  QUEUE  =========')
@@ -103,21 +98,21 @@ print('==========================')
 
 while inp_menu == True:
   print("======MENU======\n|  1. CREATE   |")
-  print("|  2. INSERT   |")
-  print("|  3. REMOVE   |")
-  print("|  4. ISEMPTY  |")
+  print("|  2. ISEMPTY  |")
+  print("|  3. INSERT   |")
+  print("|  4. REMOVE   |")
   print("|  5. KELUAR   |\n================")
   opsi = int(input("Masukkan operasi yang diinginkan: "))
 
   if (opsi == 1) :
     create()
   elif (opsi == 2) :
+    isempty(queue)
+  elif (opsi == 3) :
     inp = input("Masukkan elemen: ")
     insert(inp)
-  elif (opsi == 3) :
-    remove()
   elif (opsi == 4) :
-    isempty(queue)  
+    remove()
   else :
-    inp_menu = False  
-    print("Anda keluar dari program...")
+    inp_menu = False 
+    print("Anda keluar dari program...") 
