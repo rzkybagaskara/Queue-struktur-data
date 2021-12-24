@@ -8,17 +8,13 @@ tampilan = []
 indeks = 0
 noel = 0
 
+
 def create():
-  global queue
-  global size
-  global tampilan
-  size = int(input("Ukuran Queue: "))
-  if size == 0:
-    print("Queue tidak boleh memiliki ukuran 0!\n")
-  else:
+    global queue
+    global size
+    global tampilan
     queue = []
-    tampilan =  ["_" for i in range(size)] 
-    print("Queue telah dibuat") 
+    tampilan =  ["_" for i in range(size)]  
     print("Q =",'[ %s ]' % ' , '.join(map(str, tampilan)))
     print("FRONT(Q) = NULL")#Karena masih hampa, front = null
     print("REAR(Q)  = NULL") #karena masih hampa, rear = null
@@ -94,8 +90,69 @@ def isempty(q):
 
 print('==========================')
 print('========  QUEUE  =========')
-print('==========================')
+print('==========================\n')
 
+print("1. Membuat Queue Kosong")#queue kosong
+print("2. Membuat Queue Terisi")#queue terisi penuh otomatis
+print("3. Mmebuat Queue Bebas/Acak")#menginput manual elemen queue
+input1=int(input("Pilihan : "))
+if input1 == 1 :
+  size = int(input("\nMasukkan Ukuran Queue: "))
+  if size == 0:
+      print("Queue tidak boleh memiliki ukuran 0!\n")
+  else:
+      queue = []
+      tampilan =  ["_" for i in range(size)]
+      print("\nQ =",'[ %s ]' % ' , '.join(map(str, tampilan)))
+      print("FRONT(Q) = NULL")
+      print("REAR(Q)  = NULL")
+      print(f"NOEL(Q) = {len(queue)}\n")
+elif input1 == 2 :
+  asci1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  size = int(input("\nMasukkan Ukuran Queue: "))
+  if size == 0:
+      print("Queue tidak boleh memiliki ukuran 0!\n")
+  else:
+      queue = []
+      tampilan = ["_" for i in range(size)]
+      for i in range(size):
+          queue.append([asci1[i], i + 1])
+          tampilan[i] = asci1[i]
+
+      print("Queue telah dibuat")
+      print("Q =", '[ %s ]' % ' , '.join(map(str, tampilan)))
+      print(
+          f"FRONT(Q) = {queue[0][0]},{queue[0][1]}")  # Front (A) tetap 0, terus front(elemen) indeksnya dimulai dari 1
+      print(
+          f"REAR(Q)  = {queue[-1][0]},{queue[-1][1]}")  # Rear (A) berkurang 1, terus rear(elemen) indeksnya  1
+      print(f"NOEL(Q)  = {len(queue)}\n")  # Ngitung panjang queue
+else:
+    size = int(input("\nMasukkan Ukuran Queue: "))
+    if size == 0:
+        print("Queue tidak boleh memiliki ukuran 0!\n")
+    else:
+        queue = []
+        tampilan =  ["_" for i in range(size)] 
+        while (len(queue) < size):
+            print("Masukkan elemen ke-",len(queue)+1," : ")
+            inp = input()
+            if (inp == "_"):
+                break
+            else:
+                queue.append([inp, indeks+1])
+                tampilan[indeks] = inp
+                indeks += 1
+                rear = len(queue)-1
+        if len(queue) == 0:
+            print("\nQ =",'[ %s ]' % ' , '.join(map(str, tampilan)))
+            print("FRONT(Q) = NULL")
+            print("REAR(Q)  = NULL")
+            print(f"NOEL(Q) = {len(queue)}\n")   
+        else:
+            print("\nQ =",'[ %s ]' % ' , '.join(map(str, tampilan)))
+            print(f"FRONT(Q) = {queue[0][0]},{queue[0][1]}")
+            print(f"REAR(Q)  = {queue[rear][0]},{queue[rear][1]}")
+            print(f"NOEL(Q)  = {len(queue)}\n")
 while inp_menu == True:
   print("======MENU======\n|  1. CREATE   |")
   print("|  2. ISEMPTY  |")
@@ -116,3 +173,6 @@ while inp_menu == True:
   else :
     inp_menu = False 
     print("Anda keluar dari program...") 
+
+
+
