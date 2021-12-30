@@ -94,7 +94,7 @@ print('==========================\n')
 
 print("1. Membuat Queue Kosong")#queue kosong
 print("2. Membuat Queue Terisi")#queue terisi penuh otomatis
-print("3. Mmebuat Queue Bebas/Acak")#menginput manual elemen queue
+print("3. Membuat Queue Bebas/Acak")#menginput manual elemen queue
 input1=int(input("Pilihan : "))
 if input1 == 1 :
   size = int(input("\nMasukkan Ukuran Queue: "))
